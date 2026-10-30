@@ -1,777 +1,907 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한의학 전문의 서종철 교수 프로필 | 徐鍾澈 敎授 鍼灸醫學</title>
+  <title>徐鍾澈 敎授 | 동의대학교 한의과대학 침구의학교실 서종철</title>
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts (Noto Serif KR & Inter) -->
+  
+  <!-- Google Fonts: Cormorant Garamond (영문/한자 조판미) & Noto Serif KR & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
             serif: ['"Noto Serif KR"', 'serif'],
-            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Cormorant Garamond"', '"Noto Serif KR"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            tradition: {
-              ink: '#1c1b18',
-              charcoal: '#2b2a27',
-              paper: '#f9f8f5',
-              border: '#e4dfd5',
-              gold: '#c59b27',
-              goldHover: '#ad841d',
-              accent: '#8b261e', /* 한의학 연지색/주색 */
-              emerald: '#235347', /* 쑥/본초의 청록색 */
-              sand: '#ece7de'
+            arche: {
+              paper: '#FAF8F5',       /* 최고급 수제 한지 베이스 */
+              wash: '#F2EFE9',        /* 옅은 먹물 세척 톤 */
+              border: '#E2DDD3',      /* 미세 실선 경계 */
+              borderDark: '#2C2B28',  /* 흑색 구조 경계선 */
+              ink: '#181715',         /* 농묵(濃墨) */
+              lead: '#57534E',        /* 중묵(中墨) */
+              subtle: '#8C857B',      /* 담묵(淡墨) */
+              vermilion: '#B93829',   /* 인주 주색(朱色) */
+              vermilionLight: '#FDF2F0',
+              pine: '#244238',        /* 소나무·솔잎 청록 */
+              ochre: '#A37222',       /* 전통 황토금색 */
             }
+          },
+          letterSpacing: {
+            tighter: '-0.04em',
+            tight: '-0.02em',
+            widest2: '0.25em'
           }
         }
       }
     }
   </script>
+
   <style>
-    /* 한의학 특유의 고즈넉한 인쇄물 및 낙관 느낌 */
-    .hanja-seal {
+    /* Taste Skill: Anti-Slop 엄격한 가독성 및 정형 타이포그래피 */
+    ::selection {
+      background-color: #181715;
+      color: #FAF8F5;
+    }
+    
+    .vertical-rl {
       writing-mode: vertical-rl;
-      text-orientation: upright;
+      text-orientation: mixed;
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
+
+    /* 전통 격자 선미학 (Rule lines) */
+    .border-grid {
+      background-image: linear-gradient(to right, #E2DDD3 1px, transparent 1px),
+                        linear-gradient(to bottom, #E2DDD3 1px, transparent 1px);
+      background-size: 80px 80px;
     }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background-color: #d1c7b7;
-      border-radius: 9999px;
+
+    /* 탭 전환 트랜지션 */
+    .tab-pane {
+      display: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .tab-pane.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-<body class="bg-tradition-paper text-tradition-ink font-sans antialiased selection:bg-tradition-gold/30 selection:text-tradition-ink min-h-screen flex flex-col justify-between">
+<body class="bg-arche-paper text-arche-ink font-sans antialiased selection:bg-arche-ink selection:text-arche-paper min-h-screen flex flex-col justify-between">
 
-  <!-- ==================== 상단 네비게이션 ==================== -->
-  <header class="sticky top-0 z-50 bg-tradition-paper/90 backdrop-blur-md border-b border-tradition-border transition-all">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <!-- 낙관(落款) 형태의 엠블럼 -->
-        <div class="w-10 h-10 rounded-lg bg-tradition-accent text-white flex items-center justify-center shadow-md font-serif font-black text-lg tracking-tighter">
+  <!-- ================= TOP TICKER / STATUS BAR ================= -->
+  <aside class="w-full bg-arche-ink text-arche-paper text-xs py-2 px-4 sm:px-8 border-b border-arche-ink/20 flex flex-wrap justify-between items-center tracking-tight">
+    <div class="flex items-center gap-3">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-arche-vermilion"></span>
+      <span class="font-serif tracking-widest text-[11px] text-stone-300">東義大學校 韓醫科大學 鍼灸醫學敎室</span>
+      <span class="text-stone-500 hidden sm:inline">|</span>
+      <span class="text-stone-400 hidden sm:inline">Ultrasound-Guided Acupotomy & Clinical CPG Research</span>
+    </div>
+    <div class="flex items-center gap-4 text-[11px] font-mono text-stone-400">
+      <span>BUSAN, KR</span>
+      <span>•</span>
+      <span class="text-stone-300 font-sans">침구과 전문의 徐鍾澈</span>
+    </div>
+  </aside>
+
+  <!-- ================= MASTHEAD NAVIGATION ================= -->
+  <header class="sticky top-0 z-40 bg-arche-paper/95 backdrop-blur-md border-b border-arche-border transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo / Seal -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-9 h-9 border border-arche-vermilion text-arche-vermilion flex items-center justify-center font-serif text-base font-black tracking-tight group-hover:bg-arche-vermilion group-hover:text-white transition-colors">
           徐
         </div>
         <div>
-          <span class="font-serif font-bold text-xl tracking-tight text-tradition-ink flex items-center gap-1.5">
-            서종철 <span class="text-xs text-tradition-gold font-serif font-medium border border-tradition-gold/40 px-1.5 py-0.5 rounded">徐鍾澈</span>
-          </span>
-          <p class="text-xs text-stone-500 font-medium">동의대학교 한의과대학 침구의학교실</p>
+          <div class="font-serif font-black text-lg tracking-tight flex items-baseline gap-1.5">
+            서종철 <span class="font-display italic text-sm text-arche-subtle font-normal">Prof. Jong-Cheol Seo</span>
+          </div>
+          <div class="text-[11px] tracking-wider text-arche-subtle uppercase font-mono">
+            K.M.D., Ph.D. / Dept. of Acupuncture & Moxibustion
+          </div>
         </div>
-      </div>
+      </a>
 
-      <!-- 데스크탑 메뉴 -->
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-700">
-        <a href="#about" class="hover:text-tradition-accent transition-colors flex items-center gap-1">
-          <span class="text-xs text-tradition-gold font-serif">履歷</span> 약력·소개
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase text-arche-lead">
+        <a href="#manifesto" class="hover:text-arche-vermilion transition-colors flex items-center gap-1.5">
+          <span class="font-display italic text-arche-ochre text-sm lowercase">01.</span> 醫道철학
         </a>
-        <a href="#philosophy" class="hover:text-tradition-accent transition-colors flex items-center gap-1">
-          <span class="text-xs text-tradition-gold font-serif">醫道</span> 의학철학
+        <a href="#clinical-system" class="hover:text-arche-vermilion transition-colors flex items-center gap-1.5">
+          <span class="font-display italic text-arche-ochre text-sm lowercase">02.</span> 專門임상·도침
         </a>
-        <a href="#clinical" class="hover:text-tradition-accent transition-colors flex items-center gap-1">
-          <span class="text-xs text-tradition-gold font-serif">專門</span> 전문진료·특수침
+        <a href="#academics" class="hover:text-arche-vermilion transition-colors flex items-center gap-1.5">
+          <span class="font-display italic text-arche-ochre text-sm lowercase">03.</span> 硏究·진료지침
         </a>
-        <a href="#research" class="hover:text-tradition-accent transition-colors flex items-center gap-1">
-          <span class="text-xs text-tradition-gold font-serif">硏究</span> 연구·교육
+        <a href="#curriculum" class="hover:text-arche-vermilion transition-colors flex items-center gap-1.5">
+          <span class="font-display italic text-arche-ochre text-sm lowercase">04.</span> 講義·교육
         </a>
-        <a href="#contact" class="hover:text-tradition-accent transition-colors flex items-center gap-1">
-          <span class="text-xs text-tradition-gold font-serif">連絡</span> 문의·오시는길
+        <a href="#contact" class="hover:text-arche-vermilion transition-colors flex items-center gap-1.5">
+          <span class="font-display italic text-arche-ochre text-sm lowercase">05.</span> 連絡·진료처
         </a>
       </nav>
 
-      <!-- 모바일 햄버거 버튼 -->
-      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-stone-700 hover:bg-stone-200 focus:outline-none" aria-label="메뉴 열기">
+      <!-- CTA -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="#contact" class="text-xs font-mono tracking-tight px-4 py-2 border border-arche-ink bg-arche-ink text-arche-paper hover:bg-transparent hover:text-arche-ink transition-all">
+          CONSULT / 診療相談
+        </a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="mobileMenuBtn" class="lg:hidden p-2 text-arche-ink" aria-label="메뉴 열기">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
 
-    <!-- 모바일 메뉴 드롭다운 -->
-    <div id="mobileMenu" class="hidden md:hidden border-b border-tradition-border bg-tradition-paper px-6 py-4 space-y-3">
-      <a href="#about" class="block py-1 text-stone-800 hover:text-tradition-accent font-medium">履歷 (약력·소개)</a>
-      <a href="#philosophy" class="block py-1 text-stone-800 hover:text-tradition-accent font-medium">醫道 (의학철학)</a>
-      <a href="#clinical" class="block py-1 text-stone-800 hover:text-tradition-accent font-medium">專門 (전문진료·특수침)</a>
-      <a href="#research" class="block py-1 text-stone-800 hover:text-tradition-accent font-medium">硏究 (연구·교육)</a>
-      <a href="#contact" class="block py-1 text-stone-800 hover:text-tradition-accent font-medium">連絡 (문의·오시는길)</a>
+    <!-- Mobile Nav Panel -->
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-arche-border bg-arche-paper px-6 py-6 space-y-4 text-sm font-serif">
+      <a href="#manifesto" class="block text-arche-ink hover:text-arche-vermilion">01. 醫道 (의학 철학)</a>
+      <a href="#clinical-system" class="block text-arche-ink hover:text-arche-vermilion">02. 專門 (전문 임상 및 도침술)</a>
+      <a href="#academics" class="block text-arche-ink hover:text-arche-vermilion">03. 硏究 (연구 과제 및 CPG)</a>
+      <a href="#curriculum" class="block text-arche-ink hover:text-arche-vermilion">04. 講義 (대학 강의 및 교육)</a>
+      <a href="#contact" class="block text-arche-ink hover:text-arche-vermilion">05. 連絡 (연구실 및 진료처)</a>
     </div>
   </header>
 
-  <!-- ==================== HERO SECTION ==================== -->
-  <section class="relative overflow-hidden pt-12 pb-20 md:py-24 border-b border-tradition-border bg-gradient-to-b from-[#fbfaf7] via-tradition-paper to-tradition-sand/40">
-    <!-- 배경 은은한 한자 장식 워터마크 -->
-    <div class="absolute right-4 top-10 select-none pointer-events-none opacity-[0.035] text-[180px] md:text-[280px] font-serif font-black leading-none text-stone-900 hanja-seal hidden sm:block">
-      鍼灸
-    </div>
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <!-- ================= HERO EDITORIAL SECTION ================= -->
+  <section class="border-b border-arche-border bg-arche-paper relative overflow-hidden">
+    <!-- 비대칭 에디토리얼 그리드 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+      
+      <!-- Left Column: 서예적 표제와 선언문 -->
+      <div class="lg:col-span-8 space-y-8">
         
-        <!-- 좌측 소개 문구 -->
-        <div class="lg:col-span-8 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-200/70 border border-stone-300 text-xs font-semibold text-stone-800">
-            <span class="w-2 h-2 rounded-full bg-tradition-accent animate-pulse"></span>
-            東義大學校 韓醫科大學 鍼灸醫學敎室
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 border border-arche-border text-[11px] font-mono tracking-widest uppercase text-arche-lead bg-arche-wash">
+            ARCHIVE NO. 2026-OMD
+          </span>
+          <span class="text-xs font-serif text-arche-vermilion tracking-widest font-semibold">
+            溫故知新 · 辨證施治
+          </span>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-[3.4rem] font-bold leading-[1.18] tracking-tight text-arche-ink">
+          수천 년 鍼灸의 경혈 체계 위에<br>
+          <span class="font-normal italic font-display text-arche-lead">초음파 영상의학의 정밀함</span>을 조화하다.
+        </h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 pt-4 border-t border-arche-border">
+          <div class="sm:col-span-8">
+            <p class="font-serif text-base sm:text-lg text-arche-lead leading-relaxed">
+              동의대학교 한의과대학 침구의학교실 조교수이자 한방척추관절센터 전문의로서, 난치성 유착 질환·안면신경마비·척추관절 질환을 근거중심 침구의학과 초음파 유도하 침도요법(Ultrasound-guided Acupotomy)으로 진료하고 연구합니다.
+            </p>
           </div>
-
-          <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-tradition-charcoal tracking-tight">
-            전통 鍼灸의 깊은 지혜 위에<br class="hidden sm:inline">
-            <span class="text-tradition-accent underline decoration-tradition-gold/50 decoration-wavy decoration-2">현대 영상의학의 정밀함</span>을 더합니다.
-          </h1>
-
-          <p class="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl font-serif">
-            <span class="font-bold text-stone-800">温故知新(온고지신)</span>의 정신으로 난치성 근골격계 질환, 안면신경마비, 관절 구축을 근거중심 침구의학과 초음파 유도하 침도요법(Acupotomy)으로 다스립니다.
-          </p>
-
-          <!-- 간략 카드 태그 -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-            <div class="p-3 bg-white/80 rounded-xl border border-tradition-border shadow-sm">
-              <span class="text-xs text-stone-400 block font-serif">專門診療</span>
-              <span class="text-sm font-semibold text-stone-800">침구의학과 전문의</span>
-            </div>
-            <div class="p-3 bg-white/80 rounded-xl border border-tradition-border shadow-sm">
-              <span class="text-xs text-stone-400 block font-serif">主要分野</span>
-              <span class="text-sm font-semibold text-stone-800">척추·관절 & 도침치료</span>
-            </div>
-            <div class="p-3 bg-white/80 rounded-xl border border-tradition-border shadow-sm col-span-2 sm:col-span-1">
-              <span class="text-xs text-stone-400 block font-serif">標準指針</span>
-              <span class="text-sm font-semibold text-stone-800">안면신경마비 CPG 연구</span>
-            </div>
-          </div>
-
-          <!-- 액션 버튼 -->
-          <div class="flex flex-wrap items-center gap-4 pt-4">
-            <a href="#clinical" class="px-6 py-3 rounded-xl bg-tradition-ink text-white font-medium hover:bg-stone-800 transition-all shadow-md hover:shadow-lg flex items-center gap-2">
-              <i data-lucide="crosshair" class="w-4 h-4 text-tradition-gold"></i>
-              주요 진료·시술 안내
-            </a>
-            <a href="#contact" class="px-6 py-3 rounded-xl bg-white border border-tradition-border font-medium text-stone-700 hover:bg-stone-100 transition-all shadow-sm flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-4 h-4 text-tradition-accent"></i>
-              연구실 및 진료처
-            </a>
+          <div class="sm:col-span-4 border-l border-arche-border pl-6 space-y-2 font-mono text-xs text-arche-subtle">
+            <div>SPECIALTY:</div>
+            <div class="text-arche-ink font-sans font-medium text-sm">침구과 전문의 (鍼灸科)</div>
+            <div class="pt-2">APPOINTMENTS:</div>
+            <div class="text-arche-ink font-sans font-medium">전문의시험 출제위원</div>
           </div>
         </div>
 
-        <!-- 우측 프로필 위젯 / 명패 카드 -->
-        <div class="lg:col-span-4 flex justify-center">
-          <div class="w-full max-w-sm bg-white border border-tradition-border rounded-2xl p-6 shadow-xl relative overflow-hidden">
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-tradition-gold/10 rounded-full blur-2xl"></div>
+        <!-- 핵심 역량 인덱스 바 (Taste Skill Metric Style) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-0 border border-arche-border bg-arche-wash divide-x divide-y sm:divide-y-0 divide-arche-border text-left">
+          <div class="p-4 sm:p-5">
+            <span class="block text-[11px] font-mono text-arche-subtle uppercase">Target Pathology</span>
+            <span class="font-serif font-bold text-base text-arche-ink mt-1 block">안면신경마비</span>
+            <span class="text-[11px] text-arche-lead font-mono">CPG 고도화 연구책임</span>
+          </div>
+          <div class="p-4 sm:p-5">
+            <span class="block text-[11px] font-mono text-arche-subtle uppercase">Intervention</span>
+            <span class="font-serif font-bold text-base text-arche-ink mt-1 block">초음파 가이드 침도</span>
+            <span class="text-[11px] text-arche-lead font-mono">신경·혈관 무손상 박리</span>
+          </div>
+          <div class="p-4 sm:p-5">
+            <span class="block text-[11px] font-mono text-arche-subtle uppercase">Joint Preservation</span>
+            <span class="font-serif font-bold text-base text-arche-ink mt-1 block">수술후 관절구축</span>
+            <span class="text-[11px] text-arche-lead font-mono">ROM 보존적 복원</span>
+          </div>
+          <div class="p-4 sm:p-5">
+            <span class="block text-[11px] font-mono text-arche-subtle uppercase">Education</span>
+            <span class="font-serif font-bold text-base text-arche-ink mt-1 block">신침요법학·침구학</span>
+            <span class="text-[11px] text-arche-lead font-mono">전공 필수 임상 교육</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: 고전 한자 장정과 정체성 패널 -->
+      <div class="lg:col-span-4 lg:pl-4">
+        <div class="border border-arche-border bg-white p-6 sm:p-8 space-y-6 shadow-[4px_4px_0px_0px_rgba(24,23,21,0.06)] relative">
+          
+          <!-- 상단 한자 전각 인장 장식 -->
+          <div class="flex items-start justify-between border-b border-arche-border pb-5">
+            <div>
+              <span class="text-[11px] font-mono text-arche-subtle uppercase block tracking-wider">Faculty & Clinician</span>
+              <div class="text-2xl font-serif font-black text-arche-ink mt-1">徐 鍾 澈</div>
+              <div class="text-xs text-arche-vermilion font-serif font-medium mt-0.5">東義大 韓醫大 敎授 / 專門醫</div>
+            </div>
             
-            <!-- 상단 인장 뱃지 -->
-            <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-4">
-              <div>
-                <span class="text-xs font-semibold text-stone-500 uppercase tracking-wider block">Professor & K.M.D.</span>
-                <span class="font-serif font-black text-2xl text-stone-900">서종철</span>
-                <span class="text-xs text-stone-500 font-serif ml-1.5 font-bold">徐 鍾 澈</span>
-              </div>
-              <div class="border-2 border-tradition-accent text-tradition-accent px-2 py-1 rounded text-xs font-serif font-bold shadow-inner">
-                침구과<br>전문의
-              </div>
-            </div>
-
-            <!-- 소속 정보 -->
-            <div class="space-y-3 text-sm text-stone-600">
-              <div class="flex items-start gap-2.5">
-                <i data-lucide="graduation-cap" class="w-4 h-4 text-tradition-gold shrink-0 mt-0.5"></i>
-                <div>
-                  <span class="font-medium text-stone-800">동의대학교 한의과대학</span>
-                  <p class="text-xs text-stone-500">한의학과 침구의학교실 조교수</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-2.5">
-                <i data-lucide="building-2" class="w-4 h-4 text-tradition-gold shrink-0 mt-0.5"></i>
-                <div>
-                  <span class="font-medium text-stone-800">동의대학교부속한방병원</span>
-                  <p class="text-xs text-stone-500">한방척추관절센터 / 침구과 전문진료</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-2.5">
-                <i data-lucide="award" class="w-4 h-4 text-tradition-gold shrink-0 mt-0.5"></i>
-                <div>
-                  <span class="font-medium text-stone-800">대한한의사전문의 자격시험</span>
-                  <p class="text-xs text-stone-500">출제 및 문항개발위원</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-dashed border-stone-200">
-              <div class="bg-tradition-sand/40 p-3 rounded-xl border border-stone-200 text-xs text-stone-600 space-y-1">
-                <p class="font-serif font-semibold text-stone-800 flex items-center gap-1">
-                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-tradition-accent"></i>
-                  座右銘 (좌우명)
-                </p>
-                <p class="italic text-stone-700">"大醫精誠(대의정성) — 환자의 고통을 깊이 헤아리고 끊임없이 정진하는 의술"</p>
-              </div>
+            <div class="w-12 h-16 border-2 border-arche-vermilion text-arche-vermilion flex items-center justify-center font-serif text-sm font-bold vertical-rl tracking-widest">
+              大醫精誠
             </div>
           </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
+          <!-- 프로필 상세 목록 -->
+          <div class="space-y-4 text-xs font-serif leading-relaxed">
+            <div class="space-y-1">
+              <span class="font-mono text-[10px] text-arche-subtle uppercase tracking-wider block">Affiliation</span>
+              <p class="font-medium text-arche-ink text-sm">동의대학교 한의과대학 한의학과 조교수</p>
+              <p class="text-arche-lead">동의대학교부속한방병원 한방척추관절센터 (침구과 3)</p>
+            </div>
 
-  <!-- ==================== 1. 약력 및 소개 (履歷) ==================== -->
-  <section id="about" class="py-16 md:py-24 border-b border-tradition-border bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-serif font-bold text-tradition-accent tracking-widest uppercase">Curriculum Vitae</span>
-        <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
-          履歷 및 主要活動 <span class="text-stone-400 text-xl font-normal">(약력과 활동)</span>
-        </h2>
-        <div class="w-12 h-0.5 bg-tradition-gold mx-auto mt-4"></div>
-      </div>
+            <div class="space-y-1 pt-2 border-t border-arche-border/60">
+              <span class="font-mono text-[10px] text-arche-subtle uppercase tracking-wider block">Key Expertise</span>
+              <p class="text-arche-ink">
+                · 초음파 유도하 침도요법 (Acupotomy)<br>
+                · 난치성 말초 안면신경마비 및 연합운동 후유증<br>
+                · 수술 및 외상 후 섬유성 관절구축(Joint Contracture)<br>
+                · 척추관협착증 및 경추·요추 추간판탈출증 보존 치료
+              </p>
+            </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- 교육 및 학위 -->
-        <div class="bg-tradition-paper p-6 rounded-2xl border border-tradition-border relative">
-          <div class="w-10 h-10 rounded-xl bg-tradition-sand flex items-center justify-center text-tradition-ink mb-4">
-            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <div class="space-y-1 pt-2 border-t border-arche-border/60">
+              <span class="font-mono text-[10px] text-arche-subtle uppercase tracking-wider block">Contact & Room</span>
+              <p class="font-mono text-arche-ink">간호학관 101호 침구의학교실 연구실</p>
+              <p class="font-mono text-arche-lead">iron._.e@deu.ac.kr / blotus21@gmail.com</p>
+            </div>
           </div>
-          <h3 class="font-serif font-bold text-lg text-stone-900 mb-1 flex items-center justify-between">
-            學術 및 敎育
-            <span class="text-xs text-stone-500 font-serif">敎學相長</span>
-          </h3>
-          <p class="text-xs text-stone-500 mb-4">교육과 학문적 수련의 과정</p>
-          <ul class="space-y-3 text-sm text-stone-700">
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>한의학사 / 한의학 석·박사 (침구의학 전공)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>동의대학교 한의과대학 침구의학과 조교수</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>침구과학 및 신침요법학(新鍼療法學) 전담 강의</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>근골격계 영상진단 및 임상추론 TBL 교육 연구</span>
-            </li>
-          </ul>
-        </div>
 
-        <!-- 임상 및 전문의 경력 -->
-        <div class="bg-tradition-paper p-6 rounded-2xl border border-tradition-border relative">
-          <div class="w-10 h-10 rounded-xl bg-tradition-sand flex items-center justify-center text-tradition-ink mb-4">
-            <i data-lucide="stethoscope" class="w-5 h-5"></i>
-          </div>
-          <h3 class="font-serif font-bold text-lg text-stone-900 mb-1 flex items-center justify-between">
-            臨床 및 專門醫
-            <span class="text-xs text-stone-500 font-serif">仁術濟生</span>
-          </h3>
-          <p class="text-xs text-stone-500 mb-4">임상 수련과 병원 진료</p>
-          <ul class="space-y-3 text-sm text-stone-700">
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>보건복지부 공인 한의사 전문의 (침구과)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>동의대학교부속한방병원 한방척추관절센터 진료교수</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>초음파 유도하 도침술(Ultrasound-guided Acupotomy) 클리닉</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>근골격계 고도 유착 질환 및 척추 관절 보존적 치료</span>
-            </li>
-          </ul>
-        </div>
+          <!-- 다운로드 / 빠른 복사 버튼 -->
+          <button onclick="copyEmailToClipboard()" class="w-full py-3 border border-arche-ink text-xs font-mono font-medium tracking-wider uppercase text-arche-ink hover:bg-arche-ink hover:text-arche-paper transition-all flex items-center justify-center gap-2">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            COPY PROFESSOR'S EMAIL
+          </button>
 
-        <!-- 학회 및 공공 활동 -->
-        <div class="bg-tradition-paper p-6 rounded-2xl border border-tradition-border relative md:col-span-2 lg:col-span-1">
-          <div class="w-10 h-10 rounded-xl bg-tradition-sand flex items-center justify-center text-tradition-ink mb-4">
-            <i data-lucide="shield-check" class="w-5 h-5"></i>
-          </div>
-          <h3 class="font-serif font-bold text-lg text-stone-900 mb-1 flex items-center justify-between">
-            學會 및 政策委囑
-            <span class="text-xs text-stone-500 font-serif">同心協力</span>
-          </h3>
-          <p class="text-xs text-stone-500 mb-4">국가 표준 및 제도 혁신 참여</p>
-          <ul class="space-y-3 text-sm text-stone-700">
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>대한한의사협회 한의사전문의 자격시험 문항개발·출제위원</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>대한침구의학회(KAMMS) 정회원 및 학술활동</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>안면신경마비 한의표준임상진료지침(CPG) 고도화 연구책임</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-tradition-gold font-bold">·</span>
-              <span>국가생명윤리정책원 인간대상연구 윤리인증 이수</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 2. 의학 철학 (醫道) ==================== -->
-  <section id="philosophy" class="py-16 md:py-24 border-b border-tradition-border bg-tradition-paper">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-serif font-bold text-tradition-accent tracking-widest uppercase">Medical Philosophy</span>
-        <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
-          醫道 및 治療 哲學 <span class="text-stone-400 text-xl font-normal">(진료 철학)</span>
-        </h2>
-        <div class="w-12 h-0.5 bg-tradition-gold mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <div class="bg-white p-8 rounded-2xl border border-tradition-border shadow-sm hover:border-tradition-gold transition-all">
-          <div class="text-tradition-gold font-serif text-4xl font-bold mb-4">溫故知新</div>
-          <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">온고지신 (溫故知新)</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            수천 년간 축적되어 온 <span class="font-semibold text-stone-800">經絡(경락)과 經穴(경혈)</span>의 고전적 체계와 침법의 원리를 깊이 존중하며, 여기에 정밀한 현대 해부생리학과 영상진료 기법을 결합하여 환자에게 가장 안전하고 확실한 길을 제시합니다.
-          </p>
-        </div>
-
-        <div class="bg-white p-8 rounded-2xl border border-tradition-border shadow-sm hover:border-tradition-gold transition-all">
-          <div class="text-tradition-gold font-serif text-4xl font-bold mb-4">辨證施治</div>
-          <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">변증시치 (辨證施治)</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            환자마다 체질과 병인(病因)이 다릅니다. 증상 하나만을 억제하는 데 그치지 않고, <span class="font-semibold text-stone-800">經筋(경근)의 균형과 氣血(기혈)의 순환</span>, 전신 구조의 불균형을 함께 살펴 질병의 근본 원인을 바로잡습니다.
-          </p>
-        </div>
-
-        <div class="bg-white p-8 rounded-2xl border border-tradition-border shadow-sm hover:border-tradition-gold transition-all">
-          <div class="text-tradition-gold font-serif text-4xl font-bold mb-4">實事求是</div>
-          <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">실사구시 (實事求是)</h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            직관에만 머무르지 않고 <span class="font-semibold text-stone-800">객관적 데이터와 임상 연구, 표준진료지침(CPG)</span>을 기반으로 치료 성과를 증명합니다. 환자가 일상으로 온전히 복귀할 수 있도록 보존적 치료의 한계를 넓혀갑니다.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- 명언 배너 -->
-      <div class="mt-12 bg-gradient-to-r from-stone-900 to-stone-800 text-white rounded-2xl p-8 text-center relative overflow-hidden shadow-lg">
-        <div class="max-w-3xl mx-auto relative z-10 space-y-3">
-          <p class="text-tradition-gold font-serif text-base tracking-widest uppercase">孫思邈 《備急千金要方》 大醫精誠</p>
-          <p class="font-serif text-lg md:text-xl leading-relaxed text-stone-200">
-            “무릇 위대한 의사는 환자를 마주할 때 마음을 비우고 뜻을 고요히 하여, 측은히 여기는 마음으로 고통을 구제하는 것을 근본으로 삼아야 한다.”
-          </p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== 3. 전문 진료 및 특수침 (專門) ==================== -->
-  <section id="clinical" class="py-16 md:py-24 border-b border-tradition-border bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ================= 01. MANIFESTO & PHILOSOPHY (醫道) ================= -->
+  <section id="manifesto" class="py-20 border-b border-arche-border bg-arche-wash/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-arche-border pb-6 mb-12">
         <div>
-          <span class="text-xs font-serif font-bold text-tradition-accent tracking-widest uppercase">Clinical Specialization</span>
-          <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
-            主要 專門 診療領域 <span class="text-stone-400 text-xl font-normal">(진료 및 시술 안내)</span>
+          <span class="font-mono text-xs text-arche-vermilion tracking-widest uppercase block mb-1">
+            01 / MEDICAL PHILOSOPHY & ETHICS
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-arche-ink">
+            醫道와 治療 哲學 <span class="font-display italic text-2xl font-normal text-arche-subtle">— The Guiding Ethos</span>
           </h2>
-          <div class="w-12 h-0.5 bg-tradition-gold mt-4"></div>
         </div>
-        <p class="text-sm text-stone-500 mt-4 md:mt-0 font-serif">
-          초음파 진단과 정밀 침도·추나요법을 융합한 비수술 보존 치료
+        <p class="font-serif text-sm text-arche-lead mt-3 md:mt-0 max-w-md">
+          임상 현장에서 마주하는 환자의 고통을 엄밀한 의과학과 고전 침구의학의 조화로 풀어내는 세 가지 근본 축입니다.
         </p>
       </div>
 
-      <!-- 인터랙티브 진료 탭 컨트롤러 -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- 3 Pillars Grid (Taste Skill: Asymmetric, Content-Driven) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- 좌측 카테고리 선택 -->
-        <div class="lg:col-span-4 space-y-2" id="clinicalTabList">
-          <button onclick="switchTab('tab-acupotomy')" id="btn-tab-acupotomy" class="w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between bg-stone-900 text-white border-stone-900 shadow-sm">
-            <div>
-              <span class="text-xs font-serif text-tradition-gold block">超音波 導引 鍼刀療法</span>
-              <span class="font-bold text-base">초음파 유도하 도침요법</span>
+        <!-- Pillar 1 -->
+        <div class="bg-white border border-arche-border p-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-arche-border pb-3">
+              <span class="font-mono text-xs text-arche-subtle">PILLAR I</span>
+              <span class="font-serif text-xs font-bold text-arche-ochre px-2 py-0.5 border border-arche-ochre/30 bg-arche-wash">經典의 계승</span>
             </div>
-            <i data-lucide="chevron-right" class="w-5 h-5 text-tradition-gold"></i>
+            <div class="font-serif text-3xl font-black text-arche-ink tracking-tight">溫故知新</div>
+            <h3 class="font-serif font-bold text-lg text-arche-ink">온고지신 (옛 지혜와 현대 의학의 만남)</h3>
+            <p class="font-serif text-sm text-arche-lead leading-relaxed">
+              《황제내경(黃帝內經)》 이래로 전승된 <span class="text-arche-ink font-semibold">經絡과 經筋(경근)</span>의 생리학적 유기성을 깊이 신뢰합니다. 맹목적인 재현에 그치지 않고, 근골격계 초음파와 실시간 영상 진단을 통해 경혈 심부 조직의 해부학적 실체를 명확히 확인하며 치료합니다.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-arche-border/60 font-mono text-[11px] text-arche-subtle">
+            FOCUS: CLASSICAL MERIDIAN & ANATOMY
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-white border border-arche-border p-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-arche-border pb-3">
+              <span class="font-mono text-xs text-arche-subtle">PILLAR II</span>
+              <span class="font-serif text-xs font-bold text-arche-vermilion px-2 py-0.5 border border-arche-vermilion/30 bg-arche-vermilionLight">全人的 진단</span>
+            </div>
+            <div class="font-serif text-3xl font-black text-arche-ink tracking-tight">辨證施治</div>
+            <h3 class="font-serif font-bold text-lg text-arche-ink">변증시치 (개별 환자의 병인과 구조 분석)</h3>
+            <p class="font-serif text-sm text-arche-lead leading-relaxed">
+              병명 하나에 얽매여 획일화된 프로토콜을 대입하지 않습니다. 환자의 허실(虛實)과 체질, 척추·골반의 부정렬과 말초 신경망의 손상 정도를 복합적으로 감별하여, 국소 부위의 유착 박리와 전신 기혈 순환 조절을 동시 수행합니다.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-arche-border/60 font-mono text-[11px] text-arche-subtle">
+            FOCUS: HOLISTIC DIAGNOSIS & CAUSE
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-white border border-arche-border p-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-arche-border pb-3">
+              <span class="font-mono text-xs text-arche-subtle">PILLAR III</span>
+              <span class="font-serif text-xs font-bold text-arche-pine px-2 py-0.5 border border-arche-pine/30 bg-emerald-50">客觀的 근거</span>
+            </div>
+            <div class="font-serif text-3xl font-black text-arche-ink tracking-tight">實事求是</div>
+            <h3 class="font-serif font-bold text-lg text-arche-ink">실사구시 (데이터와 임상진료지침 기반)</h3>
+            <p class="font-serif text-sm text-arche-lead leading-relaxed">
+              국가 수준의 한의표준임상진료지침(CPG) 연구와 정밀 임상시험 프로토콜을 통하여 한의 치료 효과의 재현성과 안전성을 증명합니다. 환자가 납득할 수 있는 정량화된 가동범위(ROM)와 통증 척도로 진료 결과를 입증합니다.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-arche-border/60 font-mono text-[11px] text-arche-subtle">
+            FOCUS: EVIDENCE & CPG STANDARDIZATION
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sun Simiao Classical Excerpt Block -->
+      <div class="mt-8 border border-arche-borderDark bg-arche-ink text-arche-paper p-8 sm:p-10">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-start gap-8">
+          <div class="text-arche-ochre font-serif text-3xl font-black vertical-rl border-r border-stone-700 pr-6 hidden md:block">
+            大醫精誠
+          </div>
+          <div class="space-y-3 font-serif">
+            <span class="text-xs font-mono text-arche-ochre tracking-widest uppercase block">
+              孫思邈 《備急千金要方》 第一卷 序文
+            </span>
+            <p class="text-base sm:text-xl text-stone-200 leading-relaxed font-normal">
+              “무릇 훌륭한 의사가 환자를 대할 때는 반드시 정신을 가다듬고 뜻을 고요히 하여, 욕심이 없어야 하며, 먼저 자비롭고 측은히 여기는 마음을 내어 모든 사람의 고통을 구제하기를 맹세해야 한다.”
+            </p>
+            <p class="text-xs text-stone-400 font-sans">
+              환자의 통증과 기능 상실을 단순히 기계적 결함으로 보지 않고, 온전한 일상으로의 회복을 지향하는 침구의학의 본령입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 02. CLINICAL SPECIALIZATION (專門) ================= -->
+  <section id="clinical-system" class="py-20 border-b border-arche-border bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-arche-border pb-6 mb-12">
+        <div>
+          <span class="font-mono text-xs text-arche-vermilion tracking-widest uppercase block mb-1">
+            02 / CLINICAL SPECIALIZATION & ACUPOTOMY
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-arche-ink">
+            主要 專門 診療領域 <span class="font-display italic text-2xl font-normal text-arche-subtle">— Specialized Interventions</span>
+          </h2>
+        </div>
+        <p class="font-serif text-sm text-arche-lead mt-3 md:mt-0 max-w-md">
+          수술적 절제를 대신하는 비수술적 최소침습 도침술과 신경 재생 침구치료 체계입니다.
+        </p>
+      </div>
+
+      <!-- Tab Navigator & Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Tab Buttons (Left Index) -->
+        <div class="lg:col-span-4 space-y-2 border border-arche-border p-2 bg-arche-wash">
+          <button onclick="changeTab('tab-1')" id="btn-tab-1" class="tab-btn w-full text-left p-4 border border-arche-ink bg-arche-ink text-white transition-all flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] text-arche-ochre uppercase block">SPECIALTY 01</span>
+              <span class="font-serif font-bold text-base block mt-0.5">초음파 유도하 침도요법</span>
+              <span class="text-xs text-stone-300 font-serif">超音波 導引 鍼刀療法</span>
+            </div>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-arche-ochre"></i>
           </button>
 
-          <button onclick="switchTab('tab-facial')" id="btn-tab-facial" class="w-full text-left p-4 rounded-xl border border-tradition-border bg-tradition-paper hover:bg-stone-100 text-stone-800 transition-all flex items-center justify-between">
+          <button onclick="changeTab('tab-2')" id="btn-tab-2" class="tab-btn w-full text-left p-4 border border-transparent bg-transparent hover:bg-white text-arche-ink transition-all flex items-center justify-between">
             <div>
-              <span class="text-xs font-serif text-stone-500 block">口眼喎斜 & 顔面神經</span>
-              <span class="font-bold text-base">안면신경마비 & 구안와사</span>
+              <span class="font-mono text-[10px] text-arche-subtle uppercase block">SPECIALTY 02</span>
+              <span class="font-serif font-bold text-base block mt-0.5">안면신경마비 & 구안와사</span>
+              <span class="text-xs text-arche-lead font-serif">口眼喎斜 · 顔面神經麻痺</span>
             </div>
-            <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-arche-subtle opacity-0"></i>
           </button>
 
-          <button onclick="switchTab('tab-spine')" id="btn-tab-spine" class="w-full text-left p-4 rounded-xl border border-tradition-border bg-tradition-paper hover:bg-stone-100 text-stone-800 transition-all flex items-center justify-between">
+          <button onclick="changeTab('tab-3')" id="btn-tab-3" class="tab-btn w-full text-left p-4 border border-transparent bg-transparent hover:bg-white text-arche-ink transition-all flex items-center justify-between">
             <div>
-              <span class="text-xs font-serif text-stone-500 block">脊椎管狹窄症 & 椎間板</span>
-              <span class="font-bold text-base">척추관협착증 및 디스크</span>
+              <span class="font-mono text-[10px] text-arche-subtle uppercase block">SPECIALTY 03</span>
+              <span class="font-serif font-bold text-base block mt-0.5">척추관협착증 & 디스크</span>
+              <span class="text-xs text-arche-lead font-serif">脊椎管狹窄症 · 椎間板</span>
             </div>
-            <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-arche-subtle opacity-0"></i>
           </button>
 
-          <button onclick="switchTab('tab-joint')" id="btn-tab-joint" class="w-full text-left p-4 rounded-xl border border-tradition-border bg-tradition-paper hover:bg-stone-100 text-stone-800 transition-all flex items-center justify-between">
+          <button onclick="changeTab('tab-4')" id="btn-tab-4" class="tab-btn w-full text-left p-4 border border-transparent bg-transparent hover:bg-white text-arche-ink transition-all flex items-center justify-between">
             <div>
-              <span class="text-xs font-serif text-stone-500 block">關節拘縮 & 軟部組織</span>
-              <span class="font-bold text-base">수술 후 관절구축·연부조직</span>
+              <span class="font-mono text-[10px] text-arche-subtle uppercase block">SPECIALTY 04</span>
+              <span class="font-serif font-bold text-base block mt-0.5">수술 후 관절구축 보존치료</span>
+              <span class="text-xs text-arche-lead font-serif">關節拘縮 · 軟部組織 癒着</span>
             </div>
-            <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-arche-subtle opacity-0"></i>
           </button>
         </div>
 
-        <!-- 우측 상세 정보 패널 -->
-        <div class="lg:col-span-8 bg-tradition-paper p-6 sm:p-8 rounded-2xl border border-tradition-border">
+        <!-- Tab Content Display Area -->
+        <div class="lg:col-span-8 border border-arche-border p-6 sm:p-10 bg-arche-paper relative min-h-[460px]">
           
           <!-- TAB 1: 초음파 도침 -->
-          <div id="tab-acupotomy" class="tab-content space-y-5">
-            <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+          <div id="tab-1" class="tab-pane active space-y-6">
+            <div class="flex items-center justify-between border-b border-arche-border pb-4">
               <div>
-                <span class="text-xs font-bold font-serif text-tradition-accent">超音波 導引 鍼刀療法 (Ultrasound-Guided Acupotomy)</span>
-                <h4 class="font-serif text-2xl font-bold text-stone-900 mt-1">초음파 가이드하 도침(鍼刀) 요법</h4>
+                <span class="font-mono text-xs text-arche-vermilion uppercase font-semibold">METHODOLOGY & SAFETY</span>
+                <h3 class="font-serif text-2xl font-bold text-arche-ink mt-1">
+                  초음파 유도하 도침(鍼刀) 요법 <span class="font-display italic text-lg text-arche-subtle font-normal">Ultrasound-Guided Acupotomy</span>
+                </h3>
               </div>
-              <span class="px-3 py-1 rounded-full bg-tradition-sand text-xs font-bold text-stone-800">특수침술</span>
+              <span class="px-2.5 py-1 bg-arche-wash border border-arche-border font-serif text-xs font-semibold text-arche-lead">
+                최소침습 유착박리
+              </span>
             </div>
-            <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
-              도침은 끝부분에 미세한 칼날이 달린 특수침으로, 만성 염증으로 인해 들러붙고 엉켜버린 근막·인대·건 조직의 유착을 물리적으로 박리(Adhesiolysis)합니다. 특히 <span class="font-semibold text-stone-900">실시간 고해상도 초음파 영상 장비</span>를 활용하여 신경과 혈관 손상을 완벽히 회피하면서 병소 부위만을 정밀 타격합니다.
+
+            <p class="font-serif text-base text-arche-lead leading-relaxed">
+              도침(鍼刀)은 침 끝이 미세한 칼날 형태로 제작된 특수 침구 기구입니다. 만성 염증으로 인해 딱딱하게 굳고 엉겨붙은 근막(Fascia), 인대, 힘줄 주위의 섬유성 유착 조직을 물리적으로 박리하여 신경 압박을 해소하고 관절의 정상 가동성을 복원합니다.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">適應症 (주요 적응증)</span>
-                <span class="text-xs text-stone-600">수근관증후군(손목터널), 방아쇠수지, 족저근막염, 난치성 오십견, 만성 석회성 건염</span>
+
+            <div class="bg-white border border-arche-border p-5 space-y-3">
+              <h4 class="font-serif font-bold text-sm text-arche-ink flex items-center gap-2">
+                <i data-lucide="crosshair" class="w-4 h-4 text-arche-vermilion"></i>
+                초음파 실시간 시각화(Real-time US Visualization)의 당위성
+              </h4>
+              <p class="text-xs text-arche-lead leading-relaxed">
+                해부학적 변이가 많은 수부(손목/손가락) 및 관절 심부에는 지각신경과 미세혈관이 밀집되어 있습니다. 맹검(Blind) 시술 대신 <strong class="text-arche-ink">고해상도 근골격계 초음파 장비</strong>를 통해 칼날의 궤적을 1mm 단위로 실시간 확인하며, 위험 구조물을 회피하고 표적 흉터 조직(Scar tissue)만을 정밀 분리합니다.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 bg-arche-wash border border-arche-border">
+                <span class="font-mono text-[10px] text-arche-subtle uppercase block mb-1">Indications (적응증)</span>
+                <p class="font-serif text-xs text-arche-ink font-medium leading-relaxed">
+                  수근관증후군(손목터널증후군), 방아쇠수지, 족저근막염, 난치성 유착성 관절낭염(오십견), 테니스·골프엘보, 만성 건초염
+                </p>
               </div>
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">治療 特長 (치료 장점)</span>
-                <span class="text-xs text-stone-600">비절개 최소침습, 신경 손상 방지, 수술 후 발생한 섬유성 유착 조직의 안전한 박리</span>
+              <div class="p-4 bg-arche-wash border border-arche-border">
+                <span class="font-mono text-[10px] text-arche-subtle uppercase block mb-1">Clinical Advantage (치료 이점)</span>
+                <p class="font-serif text-xs text-arche-ink font-medium leading-relaxed">
+                  비절개 시술로 흉터 없음, 수술적 절제에 따른 굴곡건 영구 손상 방지, 빠른 일상 복귀, 시술 통증 제어를 위한 의학적 표준화
+                </p>
               </div>
             </div>
           </div>
 
-          <!-- TAB 2: 안면마비 -->
-          <div id="tab-facial" class="tab-content hidden space-y-5">
-            <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+          <!-- TAB 2: 안면신경마비 -->
+          <div id="tab-2" class="tab-pane space-y-6">
+            <div class="flex items-center justify-between border-b border-arche-border pb-4">
               <div>
-                <span class="text-xs font-bold font-serif text-tradition-accent">口眼喎斜 & 顔面神經麻痺 (Facial Nerve Palsy)</span>
-                <h4 class="font-serif text-2xl font-bold text-stone-900 mt-1">안면신경마비 및 후유증 클리닉</h4>
+                <span class="font-mono text-xs text-arche-vermilion uppercase font-semibold">FACIAL NERVE REHABILITATION</span>
+                <h3 class="font-serif text-2xl font-bold text-arche-ink mt-1">
+                  안면신경마비 및 후유증 클리닉 <span class="font-display italic text-lg text-arche-subtle font-normal">Bell's Palsy & Synkinesis</span>
+                </h3>
               </div>
-              <span class="px-3 py-1 rounded-full bg-tradition-sand text-xs font-bold text-stone-800">표준진료지침</span>
+              <span class="px-2.5 py-1 bg-arche-wash border border-arche-border font-serif text-xs font-semibold text-arche-lead">
+                CPG 기반 표준 진료
+              </span>
             </div>
-            <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
-              벨마비(Bell's palsy) 및 람세이헌트 증후군 등 급성기 안면마비부터 오랜 기간 지속된 만성 연합운동(Synkinesis) 및 안면구축 후유증을 다스립니다. 보건의료 표준임상진료지침(CPG) 연구에 기반한 전기침, 전침, 매선요법, 신경재생 약침을 병행하여 신경 회복을 극대화합니다.
+
+            <p class="font-serif text-base text-arche-lead leading-relaxed">
+              벨마비(Bell's palsy), 람세이헌트 증후군(Ramsay Hunt syndrome) 등 급성 안면마비부터, 6개월 이상 경과한 뒤 발생하는 만성 연합운동(음식 섭취 시 눈이 감김), 안면 근육 구축과 비대칭을 체계적으로 다스립니다.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">主要 處方 & 施術</span>
-                <span class="text-xs text-stone-600">안면 근육 특화 전침 치료, 봉독/자하거 약침술, 경근이완 수기치료</span>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-4 bg-white border border-arche-border">
+                <div class="font-serif font-bold text-sm text-arche-ink">초기 골든타임 진료</div>
+                <p class="text-xs text-arche-lead mt-1">급성기 신경 손상 억제 및 신경 부종 완화를 위한 특화 침구·약침 복합 처방</p>
               </div>
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">後遺症 管理</span>
-                <span class="text-xs text-stone-600">안면 비대칭 개선, 비자발적 눈떨림 및 연합운동 억제를 위한 심층 침구요법</span>
+              <div class="p-4 bg-white border border-arche-border">
+                <div class="font-serif font-bold text-sm text-arche-ink">안면 특화 전침(EA)</div>
+                <p class="text-xs text-arche-lead mt-1">안면 신경 분지별 정밀 주파수 전침 자극을 통한 축삭 재생 및 근위축 방지</p>
               </div>
+              <div class="p-4 bg-white border border-arche-border">
+                <div class="font-serif font-bold text-sm text-arche-ink">연합운동·구축 교정</div>
+                <p class="text-xs text-arche-lead mt-1">오배선된 신경 흥분 억제, 안면 경근 이완술 및 매선요법을 통한 대칭 복원</p>
+              </div>
+            </div>
+
+            <div class="p-4 bg-arche-wash border border-arche-border text-xs text-arche-lead font-serif">
+              <strong class="text-arche-ink font-sans">연구 책임 연계:</strong> 보건복지부 한의약혁신기술개발 안면신경마비 한의표준임상진료지침(CPG) 고도화 연구 프로토콜을 실제 임상 현장에 적용하여 신뢰도 높은 치료를 제공합니다.
             </div>
           </div>
 
           <!-- TAB 3: 척추 질환 -->
-          <div id="tab-spine" class="tab-content hidden space-y-5">
-            <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+          <div id="tab-3" class="tab-pane space-y-6">
+            <div class="flex items-center justify-between border-b border-arche-border pb-4">
               <div>
-                <span class="text-xs font-bold font-serif text-tradition-accent">脊椎管狹窄症 & 椎間板脫出症 (Spine & Disc Clinic)</span>
-                <h4 class="font-serif text-2xl font-bold text-stone-900 mt-1">척추관협착증·목/허리 디스크</h4>
+                <span class="font-mono text-xs text-arche-vermilion uppercase font-semibold">SPINAL STENOSIS & DISC</span>
+                <h3 class="font-serif text-2xl font-bold text-arche-ink mt-1">
+                  척추관협착증 및 디스크 질환 <span class="font-display italic text-lg text-arche-subtle font-normal">Conservative Spine Medicine</span>
+                </h3>
               </div>
-              <span class="px-3 py-1 rounded-full bg-tradition-sand text-xs font-bold text-stone-800">척추관절센터</span>
+              <span class="px-2.5 py-1 bg-arche-wash border border-arche-border font-serif text-xs font-semibold text-arche-lead">
+                척추관절센터 특화
+              </span>
             </div>
-            <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
-              퇴행성 척추관협착증, 추간판탈출증으로 인한 보행장애 및 하지 방사통(다리 저림)을 비수술적 요법으로 치료합니다. 척추 주변 심부 다열근과 인대의 경결을 풀어내는 심자침법, 약침을 통한 신경근 염증 제어, 그리고 척추 관절의 구조적 정렬을 회복하는 추나요법을 종합 적용합니다.
+
+            <p class="font-serif text-base text-arche-lead leading-relaxed">
+              노인성 척추관협착증으로 인한 간헐적 파행(조금만 걸어도 다리가 저리고 터질 듯한 증상), 경추 및 요추 추간판탈출증(디스크)으로 인한 방사통을 수술 없이 보존적 침구의학으로 치료합니다.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">核心 治療法</span>
-                <span class="text-xs text-stone-600">추나요법(推拿療法), 심부 경혈 전침, 척추신경근 약침주입술</span>
+
+            <div class="space-y-3 bg-white border border-arche-border p-5">
+              <div class="flex items-start gap-3">
+                <span class="font-serif font-bold text-arche-vermilion text-sm shrink-0">推拿:</span>
+                <p class="text-xs text-arche-lead"><strong class="text-arche-ink">추나요법(推拿療法):</strong> 변형된 골반 경사와 척추 분절의 기계적 압박을 환원하여 척추관 내 통로를 확보</p>
               </div>
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">目標 (치료 목표)</span>
-                <span class="text-xs text-stone-600">척추 신경 압박 완화, 보행 거리 확장, 일상 활동력 보존 및 재발 방지</span>
+              <div class="flex items-start gap-3">
+                <span class="font-serif font-bold text-arche-vermilion text-sm shrink-0">藥鍼:</span>
+                <p class="text-xs text-arche-lead"><strong class="text-arche-ink">신경근 약침 주입술:</strong> 척추 신경근 주변 화학적 염증과 부종을 빠르게 가라앉히는 정제 한약물 추출 주입</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="font-serif font-bold text-arche-vermilion text-sm shrink-0">深刺:</span>
+                <p class="text-xs text-arche-lead"><strong class="text-arche-ink">심부 다열근 침도술:</strong> 척추를 지탱하는 심부 안정화 근육의 유착을 풀어 자가 지지력 회복 유도</p>
               </div>
             </div>
           </div>
 
-          <!-- TAB 4: 수술 후 구축 -->
-          <div id="tab-joint" class="tab-content hidden space-y-5">
-            <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+          <!-- TAB 4: 수술 후 관절구축 -->
+          <div id="tab-4" class="tab-pane space-y-6">
+            <div class="flex items-center justify-between border-b border-arche-border pb-4">
               <div>
-                <span class="text-xs font-bold font-serif text-tradition-accent">關節拘縮 & 軟部組織 癒着 (Contracture & Adhesion)</span>
-                <h4 class="font-serif text-2xl font-bold text-stone-900 mt-1">외상 및 수술 후 관절구축 치료</h4>
+                <span class="font-mono text-xs text-arche-vermilion uppercase font-semibold">POST-SURGICAL CONTRACTURE</span>
+                <h3 class="font-serif text-2xl font-bold text-arche-ink mt-1">
+                  외상 및 수술 후 관절구축 보존치료 <span class="font-display italic text-lg text-arche-subtle font-normal">Post-Surgical ROM Preservation</span>
+                </h3>
               </div>
-              <span class="px-3 py-1 rounded-full bg-tradition-sand text-xs font-bold text-stone-800">기능 보존</span>
+              <span class="px-2.5 py-1 bg-arche-wash border border-arche-border font-serif text-xs font-semibold text-arche-lead">
+                관절 기능 보존
+              </span>
             </div>
-            <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
-              골절 수술이나 건(Tendon) 수술 이후 발생하는 관절 강직 및 심한 가동범위 제한(ROM Contracture) 환자를 위한 보존적 재활 치료입니다. 외과적 절제술 없이 초음파 시각화 하에 섬유화된 흉터 밴드를 정밀 박리하여 관절 기능을 보존합니다.
+
+            <p class="font-serif text-base text-arche-lead leading-relaxed">
+              수지(손가락), 주관절(팔꿈치), 족관절(발목) 등의 심한 압궤 손상이나 골절 수술 후 발생하는 <strong class="text-arche-ink">섬유성 관절구축(Joint Contracture)</strong>은 환자의 일상 생활을 심각하게 제한합니다.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">特化 領域</span>
-                <span class="text-xs text-stone-600">수부(수지간 관절) 구축, 외상 후 족관절·주관절 강직, 건초염</span>
-              </div>
-              <div class="p-3 bg-white rounded-xl border border-stone-200">
-                <span class="text-xs font-bold text-tradition-gold block mb-1">臨床 意義</span>
-                <span class="text-xs text-stone-600">굴곡건 및 신경혈관 다발 손상 없는 안전한 가동범위 회복</span>
-              </div>
+
+            <div class="border-l-2 border-arche-ink pl-4 py-1 space-y-2">
+              <div class="font-serif font-bold text-sm text-arche-ink">정형외과적 건 절제술(Tenotomy)과의 차별점</div>
+              <p class="text-xs text-arche-lead leading-relaxed">
+                정형외과적 재수술은 굴곡건을 물리적으로 절단하여 신전 각도를 얻는 대신, 영구적인 굴곡 기능 상실을 초래하는 위험이 있습니다. 초음파 유도하 침도요법은 건과 신경의 연속성을 온전히 보존하면서 관절 주위 섬유 밴드만을 박리하여 가동 범위(ROM)를 안전하게 확장합니다.
+              </p>
+            </div>
+
+            <div class="p-4 bg-arche-wash border border-arche-border text-xs text-arche-lead font-mono">
+              * The 27th Yeongnam Consortium International Conference 발표 증례 기반 정밀 시술
             </div>
           </div>
 
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- ==================== 4. 연구 및 교육 (硏究) ==================== -->
-  <section id="research" class="py-16 md:py-24 border-b border-tradition-border bg-tradition-paper">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ================= 03. RESEARCH & STANDARDIZATION (硏究) ================= -->
+  <section id="academics" class="py-20 border-b border-arche-border bg-arche-wash/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-serif font-bold text-tradition-accent tracking-widest uppercase">Research & Education</span>
-        <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
-          硏究 課題 및 敎授 講義 <span class="text-stone-400 text-xl font-normal">(주요 연구 및 강의)</span>
-        </h2>
-        <div class="w-12 h-0.5 bg-tradition-gold mx-auto mt-4"></div>
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-arche-border pb-6 mb-12">
+        <div>
+          <span class="font-mono text-xs text-arche-vermilion tracking-widest uppercase block mb-1">
+            03 / RESEARCH GRANTS & STANDARDIZATION
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-arche-ink">
+            學術 硏究 및 國家 政策 活動 <span class="font-display italic text-2xl font-normal text-arche-subtle">— Grants & Public Service</span>
+          </h2>
+        </div>
+        <p class="font-serif text-sm text-arche-lead mt-3 md:mt-0 max-w-md">
+          근거 중심 의과학의 엄격한 잣대로 한의 침구학의 표준과 국가 자격 제도를 정립해 나갑니다.
+        </p>
+      </div>
+
+      <!-- Research Cards in Asymmetric Editorial Format -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Project 1: CPG -->
+        <div class="bg-white border border-arche-border p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-arche-subtle">RESEARCH PROJECT</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 bg-arche-wash border border-arche-border">GOV FUNDED</span>
+            </div>
+            
+            <h3 class="font-serif font-bold text-xl text-arche-ink leading-snug">
+              안면신경마비 한의표준임상진료지침(CPG) 고도화 연구
+            </h3>
+            
+            <p class="font-serif text-xs text-arche-lead leading-relaxed">
+              임상시험 용역 연구책임자로서 안면신경마비 진료의 국가 표준을 고도화하기 위한 임상 프로토콜(Protocol) 검토, 객관적 유효성 및 안전성 평가 체계를 구축하고 있습니다.
+            </p>
+          </div>
+
+          <div class="border-t border-arche-border pt-4 text-[11px] font-mono text-arche-subtle space-y-1">
+            <div>ROLE: 연구책임자 (동의대학교 산학협력단)</div>
+            <div>FIELD: Clinical Practice Guidelines (CPG)</div>
+          </div>
+        </div>
+
+        <!-- Project 2: International Presentation -->
+        <div class="bg-white border border-arche-border p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-arche-subtle">INTERNATIONAL PAPER</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 bg-arche-wash border border-arche-border">CONFERENCE</span>
+            </div>
+            
+            <h3 class="font-serif font-bold text-xl text-arche-ink leading-snug">
+              Ultrasound-Guided Acupotomy for Post-Surgical Contracture
+            </h3>
+            
+            <p class="font-serif text-xs text-arche-lead leading-relaxed">
+              수지 관절의 외상 후 강직 환자를 대상으로 한 초음파 도침의 임상적 성과 보고 및 침구의학 술기 중 국소마취제(Local Anesthetics) 활용의 임상적 당위성을 제시한 국제 연구입니다.
+            </p>
+          </div>
+
+          <div class="border-t border-arche-border pt-4 text-[11px] font-mono text-arche-subtle space-y-1">
+            <div>VENUE: The 27th Yeongnam Consortium Int. Conf.</div>
+            <div>KEYWORDS: Ultrasound, Acupotomy, Local Anesthesia</div>
+          </div>
+        </div>
+
+        <!-- Project 3: National Board Examination -->
+        <div class="bg-white border border-arche-border p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] text-arche-subtle">PUBLIC SERVICE</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 bg-arche-wash border border-arche-border">CERTIFICATION</span>
+            </div>
+            
+            <h3 class="font-serif font-bold text-xl text-arche-ink leading-snug">
+              한의사전문의 자격시험 문항개발 및 출제위원
+            </h3>
+            
+            <p class="font-serif text-xs text-arche-lead leading-relaxed">
+              대한한의사협회 학술국제정책국 위촉으로 대한민국 침구의학과 전문의 양성을 위한 1차·2차 국가 자격시험의 출제, 채점 및 신규 문항 표준을 개발하고 있습니다.
+            </p>
+          </div>
+
+          <div class="border-t border-arche-border pt-4 text-[11px] font-mono text-arche-subtle space-y-1">
+            <div>APPOINTMENT: 대한한의사협회 학술교육팀</div>
+            <div>SPECIALTY BOARD: 침구과 (鍼灸科)</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 04. CURRICULUM & TEACHING (講義) ================= -->
+  <section id="curriculum" class="py-20 border-b border-arche-border bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-arche-border pb-6 mb-12">
+        <div>
+          <span class="font-mono text-xs text-arche-vermilion tracking-widest uppercase block mb-1">
+            04 / ACADEMIC COURSES & PEDAGOGY
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-arche-ink">
+            大學 講義 및 後學 養成 <span class="font-display italic text-2xl font-normal text-arche-subtle">— Courses & Training</span>
+          </h2>
+        </div>
+        <p class="font-serif text-sm text-arche-lead mt-3 md:mt-0 max-w-md">
+          동의대학교 한의과대학 본과생들을 위한 전공 필수 및 실무 임상 침구학 강의입니다.
+        </p>
+      </div>
+
+      <!-- Curriculum Timeline List -->
+      <div class="border border-arche-border divide-y divide-arche-border">
+        
+        <!-- Course 1 -->
+        <div class="p-6 sm:p-8 bg-arche-paper hover:bg-arche-wash transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 md:w-3/5">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-semibold px-2 py-0.5 border border-arche-ink bg-arche-ink text-arche-paper">전공필수</span>
+              <span class="font-mono text-xs text-arche-subtle">본과 3학년 / 1학기</span>
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-arche-ink">
+              鍼灸科學 Ⅱ (Acupuncture & Moxibustion II)
+            </h3>
+            <p class="font-serif text-xs sm:text-sm text-arche-lead leading-relaxed">
+              경락·혈위 진단법, 침구처방 조방원칙(選穴·配穴) 및 두통·안면마비·경추·요추·견관절·슬관절 질환의 원인, 감별 진단, 신체검사 및 한의학적 치료법 습득
+            </p>
+          </div>
+          <div class="md:w-2/5 flex md:justify-end">
+            <div class="text-xs font-mono text-arche-subtle space-y-1">
+              <div>METHOD: 강의, 실물 신체검사, TBL/토론</div>
+              <div>ASSESSMENT: 지식평가, OSCE, 학습태도</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="p-6 sm:p-8 bg-arche-paper hover:bg-arche-wash transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 md:w-3/5">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-semibold px-2 py-0.5 border border-arche-ink bg-arche-ink text-arche-paper">임상이론/실습</span>
+              <span class="font-mono text-xs text-arche-subtle">본과 3학년 / 2학기</span>
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-arche-ink">
+              新鍼療法學 (Special Acupoint Therapy)
+            </h3>
+            <p class="font-serif text-xs sm:text-sm text-arche-lead leading-relaxed">
+              도침요법(Acupotomy), 약침요법(Pharmacopuncture), 전침 및 매선요법 등 고전 침술을 현대적 의료기기와 융합한 특수 침법의 해부학적 기전 및 안전성 훈련
+            </p>
+          </div>
+          <div class="md:w-2/5 flex md:justify-end">
+            <div class="text-xs font-mono text-arche-subtle space-y-1">
+              <div>METHOD: 임상 술기 실습, 초음파 팬텀 훈련</div>
+              <div>GOAL: 최소침습 침도술의 안전한 임상 적용</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="p-6 sm:p-8 bg-arche-paper hover:bg-arche-wash transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 md:w-3/5">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs font-semibold px-2 py-0.5 border border-arche-border bg-white text-arche-ink">임상 실무</span>
+              <span class="font-mono text-xs text-arche-subtle">본과 4학년 / 병원 실습</span>
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-arche-ink">
+              근골격계 영상의학 판독 및 임상추론 세미나
+            </h3>
+            <p class="font-serif text-xs sm:text-sm text-arche-lead leading-relaxed">
+              X-ray 및 초음파 영상 소견과 한의학적 변증을 결합하여, 실제 한방척추관절센터 외래·입원 환자의 진단 및 최적 침구치료 계획을 수립하는 문제해결형(PBL) 교육
+            </p>
+          </div>
+          <div class="md:w-2/5 flex md:justify-end">
+            <div class="text-xs font-mono text-arche-subtle space-y-1">
+              <div>VENUE: 동의대학교 부속한방병원</div>
+              <div>CLINICAL: 한방척추관절센터 병원실습</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 05. CONTACT & HOSPITALS (連絡) ================= -->
+  <section id="contact" class="py-20 border-b border-arche-border bg-arche-wash/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-arche-border pb-6 mb-12">
+        <div>
+          <span class="font-mono text-xs text-arche-vermilion tracking-widest uppercase block mb-1">
+            05 / CONTACT & LOCATIONS
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-arche-ink">
+            硏究室 및 診療處 案內 <span class="font-display italic text-2xl font-normal text-arche-subtle">— Academic Office & Hospital</span>
+          </h2>
+        </div>
+        <p class="font-serif text-sm text-arche-lead mt-3 md:mt-0 max-w-md">
+          학술 교류, 공동 연구 과제 협의 및 한방척추관절센터 전문 외래 안내입니다.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <!-- 국가/학술 연구 과제 -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-tradition-border">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="p-2.5 rounded-xl bg-tradition-accent/10 text-tradition-accent">
-              <i data-lucide="microscope" class="w-6 h-6"></i>
-            </div>
+        <!-- College Office -->
+        <div class="bg-white border border-arche-border p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-arche-border pb-4">
+            <span class="font-mono text-xs text-arche-subtle uppercase">ACADEMIC & RESEARCH</span>
+            <span class="text-xs font-serif font-bold text-arche-vermilion">東義大學校 韓醫科大學</span>
+          </div>
+
+          <div class="space-y-4 font-serif">
             <div>
-              <h3 class="font-serif font-bold text-xl text-stone-900">主要 硏究 課題 (주요 연구 프로젝트)</h3>
-              <p class="text-xs text-stone-500 font-serif">근거중심 한의학의 선도</p>
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <div class="p-4 rounded-xl bg-tradition-paper border border-stone-200">
-              <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-tradition-sand text-stone-800 mb-1">
-                國家 研究 (CPG 고도화)
-              </span>
-              <h4 class="font-bold text-stone-900 text-sm sm:text-base">안면신경마비 한의표준임상진료지침(CPG) 고도화 연구</h4>
-              <p class="text-xs text-stone-600 mt-1 leading-relaxed">
-                보건복지부 한의표준임상진료지침 기반 임상시험 프로토콜 검토 및 임상적 효능·안전성 고도화 실증 연구 수행
-              </p>
+              <span class="text-xs font-mono text-arche-subtle uppercase block">Office Location</span>
+              <p class="text-base font-bold text-arche-ink mt-0.5">동의대학교 간호학관 101호 침구의학교실 연구실</p>
+              <p class="text-xs text-arche-lead mt-1 font-sans">부산광역시 부산진구 엄광로 176 (동의대학교 가야캠퍼스)</p>
             </div>
 
-            <div class="p-4 rounded-xl bg-tradition-paper border border-stone-200">
-              <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-tradition-sand text-stone-800 mb-1">
-                國際 學術 發表
-              </span>
-              <h4 class="font-bold text-stone-900 text-sm sm:text-base">Ultrasound-Guided Acupotomy for Joint Contracture</h4>
-              <p class="text-xs text-stone-600 mt-1 leading-relaxed">
-                외상 및 수술 후 수지관절 구축 환자에 대한 초음파 유도하 침도요법의 임상적 유효성 및 국소마취제 병용의 필요성 고찰
-              </p>
+            <div class="pt-2">
+              <span class="text-xs font-mono text-arche-subtle uppercase block">Direct Electronic Mail</span>
+              <p class="text-sm font-mono text-arche-ink font-bold mt-0.5">iron._.e@deu.ac.kr</p>
+              <p class="text-sm font-mono text-arche-lead">blotus21@gmail.com</p>
             </div>
 
-            <div class="p-4 rounded-xl bg-tradition-paper border border-stone-200">
-              <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-tradition-sand text-stone-800 mb-1">
-                制度 發展 寄與
-              </span>
-              <h4 class="font-bold text-stone-900 text-sm sm:text-base">한의사 전문의 자격시험 평가 표준화</h4>
-              <p class="text-xs text-stone-600 mt-1 leading-relaxed">
-                침구의학과 전문의 양성을 위한 국가 자격시험 신규 문항 개발 및 전문의 교재 기준 표준화 위원 활동
-              </p>
+            <div class="pt-2 text-xs text-arche-lead font-sans leading-relaxed">
+              * 학술대회 초청 강연, CPG 임상 연구 용역, 전문의 시험 및 학회 활동 관련 문의는 학과 공식 이메일을 이용해 주시기 바랍니다.
             </div>
           </div>
         </div>
 
-        <!-- 대학 강의 및 후학 양성 -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-tradition-border flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-6">
-              <div class="p-2.5 rounded-xl bg-tradition-gold/20 text-stone-800">
-                <i data-lucide="library" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <h3 class="font-serif font-bold text-xl text-stone-900">大學 講義 科目 (한의대 전공 강의)</h3>
-                <p class="text-xs text-stone-500 font-serif">後學 養成 (후학 양성과 교육)</p>
-              </div>
+        <!-- Hospital Clinic -->
+        <div class="bg-white border border-arche-border p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-arche-border pb-4">
+            <span class="font-mono text-xs text-arche-subtle uppercase">CLINICAL PRACTICE</span>
+            <span class="text-xs font-serif font-bold text-arche-ochre">東義大學校 附屬韓方病院</span>
+          </div>
+
+          <div class="space-y-4 font-serif">
+            <div>
+              <span class="text-xs font-mono text-arche-subtle uppercase block">Hospital & Department</span>
+              <p class="text-base font-bold text-arche-ink mt-0.5">동의의료원 부속한방병원 한방척추관절센터 (침구과 3)</p>
+              <p class="text-xs text-arche-lead mt-1 font-sans">부산광역시 부산진구 양정동 동의의료원</p>
             </div>
 
-            <div class="space-y-4">
-              <div class="border-l-2 border-tradition-gold pl-4 py-1">
-                <h4 class="font-bold text-stone-900 text-base">鍼灸科學 Ⅰ·Ⅱ (Acupuncture & Moxibustion)</h4>
-                <p class="text-xs text-stone-600 mt-1">
-                  경락·혈위 진단법, 침구 처방의 조방(組方) 원칙, 경추·흉요추·견관절 등 전신 근골격계 병변의 해부학적 이해와 신체검사 및 치료
-                </p>
-              </div>
-
-              <div class="border-l-2 border-tradition-gold pl-4 py-1">
-                <h4 class="font-bold text-stone-900 text-base">新鍼療法學 (Special Acupoint Therapy)</h4>
-                <p class="text-xs text-stone-600 mt-1">
-                  도침요법(Acupotomy), 약침의학(Pharmacopuncture), 매선요법, 전침(Electroacupuncture) 등 현대화된 특수 침술의 이론과 안전한 임상 술기
-                </p>
-              </div>
-
-              <div class="border-l-2 border-tradition-gold pl-4 py-1">
-                <h4 class="font-bold text-stone-900 text-base">근골격계 영상진단 토론 및 TBL 수업</h4>
-                <p class="text-xs text-stone-600 mt-1">
-                  초음파 및 X-ray 등 영상의학 소견 분석과 한의학적 진단 변증을 결합한 팀 기반 임상 역량 증진 교육
-                </p>
-              </div>
+            <div class="pt-2">
+              <span class="text-xs font-mono text-arche-subtle uppercase block">Specialized Consultation</span>
+              <p class="text-sm text-arche-ink font-bold mt-0.5">초음파 유도하 도침술 / 안면신경마비 특화 외래</p>
+              <p class="text-xs font-mono text-arche-lead mt-0.5">척추관절센터 예약/문의: 051-850-8671</p>
             </div>
-          </div>
 
-          <div class="mt-6 p-4 rounded-xl bg-stone-50 border border-stone-200">
-            <span class="text-xs font-semibold text-stone-500 block">교육 철학</span>
-            <p class="text-xs text-stone-700 italic mt-0.5">
-              “정확한 해부학적 지식 위에 고전 경혈의 생명력을 불어넣을 수 있는 참된 의료인을 양성합니다.”
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 5. 오시는 길 및 문의 (連絡) ==================== -->
-  <section id="contact" class="py-16 md:py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-serif font-bold text-tradition-accent tracking-widest uppercase">Location & Contact</span>
-        <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
-          研究室 및 診療處 案內 <span class="text-stone-400 text-xl font-normal">(문의 및 안내)</span>
-        </h2>
-        <div class="w-12 h-0.5 bg-tradition-gold mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- 학교 연구실 -->
-        <div class="p-6 sm:p-8 bg-tradition-paper rounded-2xl border border-tradition-border">
-          <div class="flex items-center gap-2 text-tradition-accent mb-3 font-serif font-bold text-sm">
-            <i data-lucide="school" class="w-4 h-4"></i>
-            東義大學校 韓醫科大學 (연구 및 학술)
-          </div>
-          <h3 class="font-serif text-xl font-bold text-stone-900 mb-4">침구의학교실 연구실</h3>
-          
-          <ul class="space-y-3 text-sm text-stone-700">
-            <li class="flex items-start gap-3">
-              <i data-lucide="map-pin" class="w-4 h-4 text-stone-400 mt-1 shrink-0"></i>
-              <span>부산광역시 부산진구 엄광로 176 동의대학교 간호학관 101호</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i data-lucide="mail" class="w-4 h-4 text-stone-400 shrink-0"></i>
-              <span class="font-mono">iron._.e@deu.ac.kr / blotus21@gmail.com</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i data-lucide="book-marked" class="w-4 h-4 text-stone-400 shrink-0"></i>
-              <span>담당교과: 침구과학, 신침요법학</span>
-            </li>
-          </ul>
-
-          <div class="mt-6 pt-4 border-t border-stone-200">
-            <p class="text-xs text-stone-500 leading-relaxed">
-              * 학술 협업, 연구 용역, 임상 교육 및 전문의 시험 관련 문의는 이메일을 통해 주시기 바랍니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- 부속 한방병원 -->
-        <div class="p-6 sm:p-8 bg-tradition-paper rounded-2xl border border-tradition-border">
-          <div class="flex items-center gap-2 text-tradition-gold font-serif font-bold text-sm">
-            <i data-lucide="hospital" class="w-4 h-4"></i>
-            東義大學校 附屬韓方病院 (임상 진료)
-          </div>
-          <h3 class="font-serif text-xl font-bold text-stone-900 mb-4">한방척추관절센터 (침구과 3)</h3>
-          
-          <ul class="space-y-3 text-sm text-stone-700">
-            <li class="flex items-start gap-3">
-              <i data-lucide="map-pin" class="w-4 h-4 text-stone-400 mt-1 shrink-0"></i>
-              <span>부산광역시 부산진구 양정동 (동의의료원 부속한방병원)</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i data-lucide="calendar-check" class="w-4 h-4 text-stone-400 shrink-0"></i>
-              <span>외래진료: 주중 외래 진료 및 초음파 도침 특수 시술</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i data-lucide="phone" class="w-4 h-4 text-stone-400 shrink-0"></i>
-              <span>척추관절센터 문의: 051-850-8671</span>
-            </li>
-          </ul>
-
-          <div class="mt-6 pt-4 border-t border-stone-200">
-            <p class="text-xs text-stone-500 leading-relaxed">
-              * 특수침(도침요법) 및 초음파 유도하 시술은 환자 상태에 따라 사전 정밀 진찰 후 진행됩니다.
-            </p>
+            <div class="pt-2 text-xs text-arche-lead font-sans leading-relaxed">
+              * 특수침(도침) 시술 및 고난도 관절구축 치료는 초진 시 정밀 초음파 영상 진찰 후 시술 일정이 결정됩니다.
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- 이메일 문의 인터랙티브 폼 모달 트리거 -->
-      <div class="mt-10 p-6 bg-stone-900 text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <!-- Quick Interactive Inscription Bar -->
+      <div class="mt-8 border border-arche-borderDark bg-arche-ink text-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <h4 class="font-serif font-bold text-lg text-stone-100">學術 交流 및 診療 相談 (온라인 문의)</h4>
-          <p class="text-xs text-stone-400 mt-1">학술 자문 또는 진료 상담 메시지를 보내실 수 있습니다.</p>
+          <span class="font-mono text-[11px] text-arche-ochre uppercase tracking-wider block">DIRECT CORRESPONDENCE</span>
+          <div class="font-serif text-lg font-bold text-stone-100 mt-1">서종철 교수 연구실 공식 연락처 복사</div>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">원클릭으로 이메일 주소를 클립보드에 저장할 수 있습니다.</p>
         </div>
-        <button onclick="copyEmailToClipboard()" class="px-5 py-2.5 rounded-xl bg-tradition-gold text-stone-950 font-semibold hover:bg-tradition-goldHover transition-all text-sm flex items-center gap-2">
+        <button onclick="copyEmailToClipboard()" class="w-full sm:w-auto px-6 py-3 border border-arche-ochre text-arche-ochre hover:bg-arche-ochre hover:text-arche-ink transition-all font-mono text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2">
           <i data-lucide="copy" class="w-4 h-4"></i>
-          이메일 주소 복사하기
+          COPY BLOTUS21@GMAIL.COM
         </button>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== 토스트 알림창 ==================== -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-stone-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 border border-stone-700">
-    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
-    <span id="toastMsg" class="text-sm font-medium">알림 메시지</span>
+  <!-- ================= NOTIFICATION TOAST ================= -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-arche-ink text-arche-paper px-5 py-3 border border-arche-borderDark shadow-2xl flex items-center gap-3 font-mono text-xs">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toastMsg">복사되었습니다.</span>
   </div>
 
-  <!-- ==================== 푸터 ==================== -->
-  <footer class="border-t border-tradition-border bg-[#f6f4ee] py-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
-      
-      <div class="space-y-1">
-        <div class="flex items-center justify-center sm:justify-start gap-2">
-          <span class="font-serif font-black text-stone-900 text-lg">徐鍾澈 敎授</span>
-          <span class="text-xs text-stone-500 font-serif">鍼灸醫學 專門醫</span>
-        </div>
-        <p class="text-xs text-stone-500">
-          동의대학교 한의과대학 침구의학교실 | 동의대학교부속한방병원 한방척추관절센터
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-arche-paper py-12 border-t border-arche-border text-arche-lead">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs font-serif">
+      <div>
+        <div class="font-bold text-arche-ink text-sm">徐鍾澈 敎授 (Prof. Jong-Cheol Seo, K.M.D., Ph.D.)</div>
+        <p class="text-arche-subtle mt-1 font-sans">
+          동의대학교 한의과대학 침구의학교실 | 동의대학교 부속한방병원 한방척추관절센터
         </p>
       </div>
-
-      <div class="text-xs text-stone-400 font-serif text-center sm:text-right">
-        <p>温故而知新 可以爲師矣 (옛 것을 익히고 새 것을 알면 스승이 될 수 있다)</p>
-        <p class="mt-1">© 2026 Prof. Jong-Cheol Seo. All Rights Reserved.</p>
+      <div class="font-mono text-[11px] text-arche-subtle md:text-right space-y-0.5">
+        <div>温故而知新 可以爲師矣</div>
+        <div>© 2026 Dept. of Acupuncture & Moxibustion, Dong-eui Univ. All rights reserved.</div>
       </div>
-
     </div>
   </footer>
 
-  <!-- ==================== 자바스크립트 로직 ==================== -->
+  <!-- ================= SCRIPTS ================= -->
   <script>
-    // 아이콘 렌더링
+    // Initialize icons
     lucide.createIcons();
 
-    // 모바일 메뉴 토글
+    // Mobile nav toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -779,58 +909,57 @@
       mobileMenu.classList.toggle('hidden');
     });
 
-    // 부드러운 스크롤 처리
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (!mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-        }
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+    // Close mobile nav on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
       });
     });
 
-    // 전문 진료 탭 전환 스크립트
-    function switchTab(tabId) {
-      // 모든 탭 컨텐츠 숨기기
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.add('hidden');
+    // Tab switcher with high contrast taste-skill states
+    function changeTab(tabId) {
+      // Hide all panes
+      document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
       });
 
-      // 선택된 탭 컨텐츠 보이기
-      const activeContent = document.getElementById(tabId);
-      if (activeContent) {
-        activeContent.classList.remove('hidden');
+      // Show target pane
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) {
+        targetPane.classList.add('active');
       }
 
-      // 버튼 스타일 업데이트
-      const tabs = ['tab-acupotomy', 'tab-facial', 'tab-spine', 'tab-joint'];
-      tabs.forEach(id => {
-        const btn = document.getElementById(`btn-${id}`);
-        if (!btn) return;
-        
-        const arrow = btn.querySelector('i');
-        const subtext = btn.querySelector('span:first-child');
+      // Update button styling
+      const buttons = [
+        { id: 'btn-tab-1', target: 'tab-1' },
+        { id: 'btn-tab-2', target: 'tab-2' },
+        { id: 'btn-tab-3', target: 'tab-3' },
+        { id: 'btn-tab-4', target: 'tab-4' },
+      ];
 
-        if (id === tabId) {
-          btn.className = "w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between bg-stone-900 text-white border-stone-900 shadow-sm";
-          if (arrow) arrow.className = "w-5 h-5 text-tradition-gold";
-          if (subtext) subtext.className = "text-xs font-serif text-tradition-gold block";
+      buttons.forEach(btnInfo => {
+        const btn = document.getElementById(btnInfo.id);
+        if (!btn) return;
+
+        const arrow = btn.querySelector('i');
+        const codeSpan = btn.querySelector('span:first-child');
+        const subtitle = btn.querySelector('span:last-child');
+
+        if (btnInfo.target === tabId) {
+          btn.className = "tab-btn w-full text-left p-4 border border-arche-ink bg-arche-ink text-white transition-all flex items-center justify-between";
+          if (arrow) arrow.className = "w-4 h-4 text-arche-ochre opacity-100";
+          if (codeSpan) codeSpan.className = "font-mono text-[10px] text-arche-ochre uppercase block";
+          if (subtitle) subtitle.className = "text-xs text-stone-300 font-serif";
         } else {
-          btn.className = "w-full text-left p-4 rounded-xl border border-tradition-border bg-tradition-paper hover:bg-stone-100 text-stone-800 transition-all flex items-center justify-between";
-          if (arrow) arrow.className = "w-5 h-5 text-stone-400";
-          if (subtext) subtext.className = "text-xs font-serif text-stone-500 block";
+          btn.className = "tab-btn w-full text-left p-4 border border-transparent bg-transparent hover:bg-white text-arche-ink transition-all flex items-center justify-between";
+          if (arrow) arrow.className = "w-4 h-4 text-arche-subtle opacity-0";
+          if (codeSpan) codeSpan.className = "font-mono text-[10px] text-arche-subtle uppercase block";
+          if (subtitle) subtitle.className = "text-xs text-arche-lead font-serif";
         }
       });
     }
 
-    // 이메일 클립보드 복사 (안전한 방식)
+    // Direct clipboard copy
     function copyEmailToClipboard() {
       const email = 'blotus21@gmail.com';
       const tempInput = document.createElement('input');
@@ -839,23 +968,22 @@
       tempInput.select();
       
       try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-          showToast(`이메일 주소(${email})가 복사되었습니다.`);
+        const ok = document.execCommand('copy');
+        if (ok) {
+          showNotification(`[COPIED] 이메일 주소(${email})가 복사되었습니다.`);
         } else {
-          showToast(`복사 실패: ${email}`);
+          showNotification(`복사 실패: ${email}`);
         }
-      } catch (err) {
-        showToast(`복사 불가: ${email}`);
+      } catch (e) {
+        showNotification(`복사 불가: ${email}`);
       }
       document.body.removeChild(tempInput);
     }
 
-    // 토스트 알림 팝업 함수
-    function showToast(message) {
+    function showNotification(msg) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = message;
+      toastMsg.textContent = msg;
 
       toast.classList.remove('translate-y-20', 'opacity-0');
       toast.classList.add('translate-y-0', 'opacity-100');
